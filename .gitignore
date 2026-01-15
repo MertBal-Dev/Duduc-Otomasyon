@@ -1,4 +1,7 @@
 node_modules/
 *.log
 error-*.png
+debug-*.png
+*.png
 .env
+kurulum_log.txt
