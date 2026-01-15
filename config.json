@@ -1,0 +1,103 @@
+{
+  "targetUrl": "https://docs.google.com/forms/d/e/1FAIpQLScJYM3ZSSIJULlHeuwy1FeNSicciuqx9JZjQziEYf_ZW7Pkig/viewform?usp=preview",
+  "requestsTarget": 50,
+  "timing": {
+    "minDelayMinutes": 0.5,
+    "maxDelayMinutes": 1.0
+  },
+  "proxies": [],
+  "forcedValues": {
+    "entry.1000553674": "Lisans"
+  },
+  "logicRules": [
+    {
+      "comment": "18-24 yaşındakiler genelde bekardır.",
+      "triggerId": "entry.958589333",
+      "triggerValue": "18-24",
+      "actionId": "entry.1663893858",
+      "actionValue": "Bekar"
+    },
+    {
+      "comment": "Evliler genelde 25 yaş üstüdür.",
+      "triggerId": "entry.1663893858",
+      "triggerValue": "Evli",
+      "actionId": "entry.958589333",
+      "actionValue": "25-34"
+    }
+  ],
+  "questions": {
+    "gender": {
+      "id": "entry.339175374",
+      "questionText": "Cinsiyetiniz",
+      "type": "radio",
+      "options": [
+        "Erkek",
+        "Kadın"
+      ]
+    },
+    "age": {
+      "id": "entry.958589333",
+      "questionText": "Yaşınız",
+      "type": "radio",
+      "options": [
+        {
+          "value": "18-24",
+          "weight": 98
+        },
+        {
+          "value": "25-34",
+          "weight": 2
+        }
+      ]
+    },
+    "education": {
+      "id": "entry.1000553674",
+      "questionText": "Eğitim Durumunuz",
+      "type": "radio",
+      "options": [
+        {
+          "value": "Lisans",
+          "weight": 100
+        }
+      ]
+    },
+    "department": {
+      "id": "entry.1703584138",
+      "questionText": "Bölüm / Anabilim Dalı",
+      "type": "text",
+      "options": [
+        {
+          "value": "Turizm Rehberliği",
+          "weight": 60
+        },
+        {
+          "value": "Gastronomi ve Mutfak Sanatları",
+          "weight": 10
+        },
+        {
+          "value": "Bilgisayar Mühendisliği",
+          "weight": 10
+        },
+        {
+          "value": "Turizm İşletmeciliği",
+          "weight": 10
+        },
+        {
+          "value": "Halkla İlişkiler",
+          "weight": 5
+        },
+        {
+          "value": "İşletme",
+          "weight": 5
+        }
+      ]
+    }
+  },
+  "likert_scale_options": [
+    "Kesinlikle Katılmıyorum",
+    "Katılmıyorum",
+    "Kararsızım",
+    "Katılıyorum",
+    "Kesinlikle Katılıyorum"
+  ]
+}

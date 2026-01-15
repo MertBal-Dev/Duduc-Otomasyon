@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 Akademik Araştırma Asistanı</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fdf8f5;
+            --card-bg: #ffffff;
+            --primary: #c48b9f;
+            --primary-dark: #a06b7f;
+            --accent: #8fbc8f;
+            --text-main: #4a4a4a;
+            --text-sub: #7a7a7a;
+            --success: #8fbc8f;
+            --danger: #e8b4b8;
+            --border: #f0e6e8;
+            --shadow: rgba(196, 139, 159, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fdf8f5 0%, #fce4ec 50%, #f3e5f5 100%);
+            color: var(--text-main);
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Floating Flowers Background */
+        body::before {
+            content: "🌸 🌷 🌺 🌼 🌻 💐 🌹 🏵️ 💮";
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            opacity: 0.6;
+            letter-spacing: 20px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* Header */
+        .header {
+            grid-column: span 2;
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #fce4ec 100%);
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            box-shadow: 0 8px 32px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "✨";
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 1.5rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: "✨";
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 1.5rem;
+            animation: sparkle 2s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin: 0 0 10px 0;
+        }
+
+        .header p {
+            color: var(--text-sub);
+            font-size: 1rem;
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* Quote Banner */
+        .quote-banner {
+            grid-column: span 2;
+            background: linear-gradient(135deg, var(--primary) 0%, #d4a5b5 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 16px;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .quote-banner span {
+            display: block;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            opacity: 0.9;
+            font-style: normal;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 28px;
+            border: 2px solid var(--border);
+            box-shadow: 0 8px 32px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px var(--shadow);
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            background: #fdf8f5;
+            border: 2px solid var(--border);
+            color: var(--text-main);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(196, 139, 159, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .btn-start {
+            background: linear-gradient(135deg, var(--success) 0%, #7cb47c 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(143, 188, 143, 0.4);
+        }
+
+        .btn-start:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(143, 188, 143, 0.5);
+        }
+
+        .btn-stop {
+            background: linear-gradient(135deg, var(--danger) 0%, #d9a3a7 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(232, 180, 184, 0.4);
+        }
+
+        .btn-stop:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(232, 180, 184, 0.5);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        #logs {
+            background: linear-gradient(180deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: #98d998;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            border-radius: 12px;
+            height: 350px;
+            overflow-y: auto;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            border: 2px solid var(--border);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .status-running {
+            background-color: var(--success);
+            box-shadow: 0 0 12px var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 12px var(--success);
+            }
+
+            50% {
+                box-shadow: 0 0 20px var(--success);
+            }
+        }
+
+        .status-stopped {
+            background-color: var(--danger);
+        }
+
+        /* Motivational Footer */
+        .footer {
+            grid-column: span 2;
+            text-align: center;
+            padding: 20px;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        .footer .heart {
+            color: var(--primary);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Status Card Special Styling */
+        .status-card {
+            background: linear-gradient(135deg, #fff9fb 0%, #fce4ec 100%);
+        }
+
+        .encouragement {
+            background: linear-gradient(135deg, #f8f4ff 0%, #e8f5e9 100%);
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 16px;
+            text-align: center;
+            font-style: italic;
+            color: var(--text-sub);
+            border: 1px dashed var(--primary);
+        }
+
+        .encouragement::before {
+            content: "🌱 ";
+        }
+
+        .encouragement::after {
+            content: " 🌱";
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🌸 Akademik Araştırma Asistanı 🌸</h1>
+            <p>"Bilim, karanlıkta bir mum gibidir; etrafını aydınlatır."</p>
+        </div>
+
+        <!-- Motivational Quote -->
+        <div class="quote-banner">
+            "Başarı, her gün atılan küçük adımların toplamıdır. Sen her adımda daha da güçleniyorsun!"
+            <span>— Seni destekleyen birileri var 💕</span>
+        </div>
+
+        <!-- Config Section -->
+        <div class="card">
+            <h2>🌷 Ayarlar</h2>
+
+            <label>Google Form Linki</label>
+            <input type="text" id="targetUrl"
+                value="https://docs.google.com/forms/d/e/1FAIpQLScJYM3ZSSIJULlHeuwy1FeNSicciuqx9JZjQziEYf_ZW7Pkig/viewform?usp=preview"
+                placeholder="Form linkini buraya yapıştırın...">
+
+            <label>Proxy Listesi (Opsiyonel)</label>
+            <textarea id="proxyList" rows="3"
+                placeholder="Her satıra bir proxy yazın...&#10;Örnek: 192.168.1.1:8080"></textarea>
+
+            <label>Hedef Anket Sayısı</label>
+            <input type="number" id="targetCount" value="50">
+
+            <div class="row">
+                <div class="col">
+                    <label>Min Süre (sn)</label>
+                    <input type="number" id="minExecTimeSec" value="120">
+                </div>
+                <div class="col">
+                    <label>Max Süre (sn)</label>
+                    <input type="number" id="maxExecTimeSec" value="300">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label>Min Bekleme (dk)</label>
+                    <input type="number" id="minCooldownMin" value="7">
+                </div>
+                <div class="col">
+                    <label>Max Bekleme (dk)</label>
+                    <input type="number" id="maxCooldownMin" value="168">
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 20px;">
+                <button class="btn-start" id="startBtn" onclick="startBot()">🚀 Başlat</button>
+                <div style="width: 12px;"></div>
+                <button class="btn-stop" id="stopBtn" onclick="stopBot()" disabled>⏹️ Durdur</button>
+            </div>
+        </div>
+
+        <!-- Status Section -->
+        <div class="card status-card">
+            <h2>🌻 Durum</h2>
+            <div style="margin-bottom: 16px;">
+                <span id="statusIndicator" class="status-indicator status-stopped"></span>
+                <span id="statusText" style="color: var(--text-main); font-weight: 600;">Hazır ve Bekliyor</span>
+            </div>
+            <p style="color: var(--text-sub); font-size: 0.9rem; line-height: 1.6;">
+                🌸 Her anket otomatik olarak pozitif yönde doldurulur.<br>
+                🌸 İnsan davranışını taklit ederek doğal görünür.<br>
+                🌸 Akademik çalışman için buradayım!
+            </p>
+
+            <div class="encouragement">
+                "Her araştırma, dünyanın daha iyi anlaşılmasına bir katkıdır. Sen de o katkıyı yapıyorsun!"
+            </div>
+        </div>
+
+        <!-- Logs Section -->
+        <div class="card full-width">
+            <h2>📜 Canlı Günlük</h2>
+            <div id="logs">🌸 Hoş geldin! Çalışmaya başlamak için yukarıdaki ayarları yapılandır ve "Başlat" butonuna
+                tıkla...</div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            Akademik yolculuğunda yanındayım <span class="heart">💕</span> Başarılar dilerim!<br>
+            <small style="opacity: 0.7;">Senin için özel olarak hazırlandı 🌷</small>
+        </div>
+    </div>
+
+    <script>
+        let isRunning = false;
+        const POLLING_INTERVAL = 1000;
+
+        // Rotate quotes
+        const quotes = [
+            '"Başarı, her gün atılan küçük adımların toplamıdır."',
+            '"Bilgi, paylaştıkça çoğalan tek hazinedir."',
+            '"Bugün ektiğin tohumlar, yarının ormanı olacak."',
+            '"Zorluklarla yüzleşmek, seni daha güçlü kılar."',
+            '"Her yeni gün, yeni bir fırsat demektir."'
+        ];
+
+        async function startBot() {
+            const proxyText = document.getElementById('proxyList').value;
+            const config = {
+                targetUrl: document.getElementById('targetUrl').value,
+                proxies: proxyText.split('\n').map(p => p.trim()).filter(p => p.length > 0),
+                targetCount: document.getElementById('targetCount').value,
+                minExecTimeSec: document.getElementById('minExecTimeSec').value,
+                maxExecTimeSec: document.getElementById('maxExecTimeSec').value,
+                minCooldownMin: document.getElementById('minCooldownMin').value,
+                maxCooldownMin: document.getElementById('maxCooldownMin').value,
+            };
+
+            try {
+                const res = await fetch('/api/start', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(config)
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    alert('🌸 Harika! Asistan çalışmaya başladı!');
+                    updateStatus(true);
+                } else {
+                    alert('💔 Hata: ' + data.message);
+                }
+            } catch (e) {
+                alert('💔 Sunucu hatası: ' + e);
+            }
+        }
+
+        async function stopBot() {
+            try {
+                await fetch('/api/stop', { method: 'POST' });
+                alert('⏸️ Durdurma sinyali gönderildi. Mevcut işlem tamamlanınca duracak.');
+            } catch (e) {
+                alert('💔 Hata: ' + e);
+            }
+        }
+
+        function updateStatus(running) {
+            isRunning = running;
+            const ind = document.getElementById('statusIndicator');
+            const txt = document.getElementById('statusText');
+            const startBtn = document.getElementById('startBtn');
+            const stopBtn = document.getElementById('stopBtn');
+
+            if (running) {
+                ind.className = 'status-indicator status-running';
+                txt.innerText = '🌼 Çalışıyor...';
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+            } else {
+                ind.className = 'status-indicator status-stopped';
+                txt.innerText = 'Hazır ve Bekliyor';
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            }
+        }
+
+        // Poll logs and status
+        setInterval(async () => {
+            try {
+                const res = await fetch('/api/status');
+                const data = await res.json();
+
+                updateStatus(data.isRunning);
+
+                const logsDiv = document.getElementById('logs');
+                if (data.logs.length > 0) {
+                    logsDiv.innerText = data.logs.join('\n');
+                }
+                logsDiv.scrollTop = logsDiv.scrollHeight;
+            } catch (e) {
+                // Silent
+            }
+        }, POLLING_INTERVAL);
+
+    </script>
+
+</body>
+
+</html>
