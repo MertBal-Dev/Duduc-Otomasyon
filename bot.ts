@@ -76,7 +76,7 @@ export class GoogleFormsBot {
             this.log(`\n🌷 ${successfulSubmissions + 1}. Anket Başlıyor... Seni çok seviyorum! 💕`);
 
             const browser = await puppeteer.launch({
-                headless: true, // Sunucuda headless olmalı
+                headless: false, // Görünür mod - formu canlı izle!
                 args: args,
                 executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
                 defaultViewport: { width: 1920, height: 1080 }
